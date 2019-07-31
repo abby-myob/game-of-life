@@ -9,10 +9,6 @@ namespace GameOfLifeLibrary
         public Cell(bool state)
         {
             State = state;
-        }
-        
-        
-
-         
+        } 
     }
 }

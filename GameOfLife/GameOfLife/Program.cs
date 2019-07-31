@@ -1,5 +1,4 @@
-﻿using System;
-using GameOfLifeLibrary;
+﻿using GameOfLifeLibrary;
 
 namespace GameOfLife
 {
@@ -7,11 +6,8 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Constants.Welcome);
-            
-            GameOfLifeLibrary.GameOfLife gameOfLife = new GameOfLifeLibrary.GameOfLife();
-            
-            
+            Display display = new Display();
+            Game game = new Game();
         }
     }
 }

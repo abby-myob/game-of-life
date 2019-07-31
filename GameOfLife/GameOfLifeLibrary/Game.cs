@@ -1,10 +1,7 @@
 namespace GameOfLifeLibrary
 {
-    public class GameOfLife
-    {
-        
-        
-        
+    public class Game
+    { 
         // create a world
         // create a display
     }
