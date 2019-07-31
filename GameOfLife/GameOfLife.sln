@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLife", "GameOfLife\GameOfLife.csproj", "{B15288F8-3759-47D0-828F-BB08414225AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeLibrary", "GameOfLifeLibrary\GameOfLifeLibrary.csproj", "{161A884B-6246-40E8-A2CF-19EFB942A15B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeTests", "GameOfLifeTests\GameOfLifeTests.csproj", "{9A1A2453-D151-4020-AAD4-DB82575036A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B15288F8-3759-47D0-828F-BB08414225AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15288F8-3759-47D0-828F-BB08414225AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15288F8-3759-47D0-828F-BB08414225AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15288F8-3759-47D0-828F-BB08414225AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161A884B-6246-40E8-A2CF-19EFB942A15B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161A884B-6246-40E8-A2CF-19EFB942A15B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161A884B-6246-40E8-A2CF-19EFB942A15B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161A884B-6246-40E8-A2CF-19EFB942A15B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
