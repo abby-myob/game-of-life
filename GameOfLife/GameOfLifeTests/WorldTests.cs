@@ -28,7 +28,7 @@ namespace GameOfLifeTests
                 i++;
                 if (initialWorld != null)
                 {
-                    char state = initialWorld[i];
+                    var state = initialWorld[i];
                     if (state == '0')
                     {
                         if (cell.IsAlive) continue;
@@ -67,7 +67,5 @@ namespace GameOfLifeTests
             
             
         }
-
-        // Test adding a cell to the world
     }
 }

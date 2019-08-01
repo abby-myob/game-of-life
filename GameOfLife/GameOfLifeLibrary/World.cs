@@ -1,12 +1,11 @@
 using System.Collections.Generic;
-using System.Threading;
 
 namespace GameOfLifeLibrary
 {
     public class World
     {
         private string InitialWorld { get; }
-        public int CellCount { get; }
+        private int CellCount { get; }
         public int[] WorldSize { get; }
         
         public readonly List<Cell> Cells = new List<Cell>();
