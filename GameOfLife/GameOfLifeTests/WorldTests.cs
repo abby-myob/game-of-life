@@ -50,9 +50,22 @@ namespace GameOfLifeTests
 
             Assert.True(correct);
         }
-        
-        
-        // Test that the world is empty
+
+        [Theory]
+        [InlineData(".........", new[] {3, 3}, 9, false)]
+        public void For_method_checkAlive_Should_all_cells_be_dead_return_false(
+            string initialWorld, 
+            int[] worldSize, 
+            int cellCount, 
+            bool isAlive)
+        {
+            var world = new World(worldSize, initialWorld, cellCount);
+            
+            Assert.Equal(isAlive,world.IsAnyCellAlive());
+            
+            
+        }
+        // Test that the world is alive
          
         // Test adding a cell to the world
     }

@@ -20,10 +20,10 @@ namespace GameOfLifeLibrary
  
         public void SetUp()
         {
-            int cellStateIndex = 0;
-            for (int row = 0; row < WorldSize[0]; row++)
+            var cellStateIndex = 0;
+            for (var row = 0; row < WorldSize[0]; row++)
             {
-                for (int col = 0; col < WorldSize[1]; col++)
+                for (var col = 0; col < WorldSize[1]; col++)
                 {
                     AddCell(row, col, cellStateIndex);
                     cellStateIndex++;
@@ -37,6 +37,20 @@ namespace GameOfLifeLibrary
             Cells.Add(InitialWorld[cellStateIndex] == '.' ? 
                 new Cell(false, row, col) : 
                 new Cell(true, row, col));
+        }
+
+        public bool IsAnyCellAlive()
+        {
+            var result = false;
+            foreach (var cell in Cells)
+            {
+                if (cell.IsAlive)
+                {
+                    return true;
+                }
+            }
+
+            return result;
         }
     }
 }

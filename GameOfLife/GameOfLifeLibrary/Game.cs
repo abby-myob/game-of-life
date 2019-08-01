@@ -12,8 +12,13 @@ namespace GameOfLifeLibrary
             var currentWorld = new World(worldSize, Display.GetInitialInput(cellCount), cellCount);
             currentWorld.SetUp();
             Display.PrintWorld(currentWorld);
+
+            
+           // currentWorld.tick();
             
             
+
+
         }
     }
 }
