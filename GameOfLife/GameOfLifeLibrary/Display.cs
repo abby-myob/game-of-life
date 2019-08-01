@@ -59,14 +59,20 @@ namespace GameOfLifeLibrary
 
         public static void PrintWorld(World world)
         {
-            var cells = new List<Cell>();
+            var cells = world.Cells;
+            int colCount = 0;
 
-            for (int row = 0; row < world.WorldSize[0]; row++)
+            foreach (var cell in cells)
             {
-                for (int col = 0; col < world.WorldSize[1]; col++)
+                if (colCount == world.WorldSize[1])
                 {
-                    
+                    colCount = 0;
+                    Console.Write('\n');
                 }
+
+                Console.Write(cell.IsAlive ? '0' : '.');
+
+                colCount++;
             }
         }
     }

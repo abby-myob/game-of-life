@@ -18,13 +18,13 @@ namespace GameOfLifeLibrary
             X = x;
         }
 
-        public bool IsAliveInNewWorld(IEnumerable neighbours)
+        public bool IsAliveInNewWorld(List<Cell> neighbours)
         {
             var aliveNeighbours = 0;
 
             foreach (var cell in neighbours)
             {
-                if (IsAlive) aliveNeighbours++;
+                if (cell.IsAlive) aliveNeighbours++;
             }
 
             if (IsAlive)

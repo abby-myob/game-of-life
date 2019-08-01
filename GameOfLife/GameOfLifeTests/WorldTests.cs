@@ -6,7 +6,7 @@ namespace GameOfLifeTests
     public class WorldTests
     {
         [Theory]
-        [InlineData("00000.....", new[]{3,3},9, 9)]
+        [InlineData("00000....", new[]{3,3},9, 9)]
         public void Check_number_of_cells_in_the_world(string initialWorld, int[] worldSize, int cellCount, int expected)
         {
             var world = new World(worldSize, initialWorld, cellCount);
@@ -16,7 +16,7 @@ namespace GameOfLifeTests
         }
         
         [Theory]
-        [InlineData("00000.....", new[]{3,3},9, true)]
+        [InlineData("00000....", new[]{3,3},9, true)]
         public void Check_dead_cell_at_location_to_be_dead(string initialWorld, int[] worldSize, int cellCount, bool correct)
         {
             var world = new World(worldSize, initialWorld, cellCount);
