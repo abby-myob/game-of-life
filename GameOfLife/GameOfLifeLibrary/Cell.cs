@@ -29,9 +29,7 @@ namespace GameOfLifeLibrary
             if (IsAlive)
             {
                 if (aliveNeighbours > 3) return false;
-                
                 if (aliveNeighbours < 2 ) return false;
-                
                 return true;
             }
 

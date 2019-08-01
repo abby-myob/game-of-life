@@ -2,11 +2,11 @@ namespace GameOfLifeLibrary
 {
     public class Game
     {
-        private string WorldSize { get; }
+        private int[] WorldSize { get; }
         private string InitialInput { get; }
         public Display Display { get; }
 
-        public Game(string worldSize, string initialInput, Display display)
+        public Game(int[] worldSize, string initialInput, Display display)
         {
             WorldSize = worldSize;
             InitialInput = initialInput;
@@ -26,17 +26,13 @@ namespace GameOfLifeLibrary
             {
                 // update the cells
                 // display the world
-                
-                
-                
-            }
-
+                 
+            } 
         }
 
         public void PrintWorld(World world)
         {
             Display.PrintWorld(world);
-        }
-        
+        } 
     }
 }

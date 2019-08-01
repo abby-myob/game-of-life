@@ -2,16 +2,14 @@
 
 namespace GameOfLife
 {
-    static class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            Display display = new Display();
-
-            display.DisplayWelcome();
+            var display = new Display();
+            Display.DisplayWelcome();
             
-            Game game = new Game(display.GetInitialInput(), display.GetWorldSize(), display);
-
+            var game = new Game(Display.GetWorldSize(), Display.GetInitialInput(),  display);
             game.Start();
         }
     }
