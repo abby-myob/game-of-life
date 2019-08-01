@@ -40,7 +40,6 @@ namespace GameOfLifeLibrary
 
         public bool IsAnyCellAlive()
         {
-            var result = false;
             foreach (var cell in Cells)
             {
                 if (cell.IsAlive)
@@ -48,8 +47,7 @@ namespace GameOfLifeLibrary
                     return true;
                 }
             }
-
-            return result;
+            return false;
         }
     }
 }
