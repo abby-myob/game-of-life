@@ -15,14 +15,6 @@ namespace GameOfLifeTests
             Assert.True(cell.IsAlive);
         }
 
-        [Fact]
-        public void Cell_state_be_set_to_alive_()
-        {
-            var cell = new Cell(true, 1, 1);
-            cell.IsAlive = false;
-            Assert.False(cell.IsAlive);
-        }
-
         [Theory]
         [InlineData(true, 0, false)]
         [InlineData(true, 4, false)]
@@ -41,7 +33,7 @@ namespace GameOfLifeTests
             Assert.Equal(expected ,cell.IsAliveInNewWorld(neighbours));
         }
 
-        public List<Cell> MakeNeighbours(int numberOfAlive)
+        private List<Cell> MakeNeighbours(int numberOfAlive)
         {
             var neighbours = new List<Cell>();
 

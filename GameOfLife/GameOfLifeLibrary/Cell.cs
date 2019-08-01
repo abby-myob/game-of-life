@@ -6,7 +6,7 @@ namespace GameOfLifeLibrary
 {
     public class Cell
     {
-        public bool IsAlive { get; set; }
+        public bool IsAlive { get; }
         public int Y { get; }
         public int X { get; }
 

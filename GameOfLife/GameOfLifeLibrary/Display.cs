@@ -1,16 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text.RegularExpressions;
 
 namespace GameOfLifeLibrary
 {
-    public class Display
+    public static class Display
     {
         public static void DisplayWelcome()
         {
             Console.WriteLine(Constants.Welcome);
         }
-
+        
         public static int[] GetWorldSize()
         {
             string response = "9x9";
@@ -28,16 +29,12 @@ namespace GameOfLifeLibrary
 
             return ConvertWorldSize(response);
         }
-
         
         public static int[] ConvertWorldSize(string input)
         {
             var nums = input.Split("x");
-            var output = new List<int>();
-
-            output.Add(int.Parse(nums[0]));
-            output.Add(int.Parse(nums[1]));
-
+            var output = new List<int> {int.Parse(nums[0]), int.Parse(nums[1])};
+            
             return output.ToArray();
         }
 
@@ -45,8 +42,20 @@ namespace GameOfLifeLibrary
         public static string GetInitialInput()
         {
             Console.WriteLine(Constants.SetInitialState);
+            var response = "";
 
-            return null;
+            while (true)
+            {
+                response = Console.ReadLine();
+                if (response != null)
+                {
+                    var size = response.Length;
+                    var regex = new Regex(@"^[.x]{" + size + "}$");
+                    if (regex.IsMatch(response)) break;
+                }
+                Console.WriteLine(Constants.InitialWorldInputError);
+            }
+            return response;
         }
 
         public static void PrintWorld(World world)

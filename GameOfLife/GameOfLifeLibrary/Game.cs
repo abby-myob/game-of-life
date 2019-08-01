@@ -2,37 +2,15 @@ namespace GameOfLifeLibrary
 {
     public class Game
     {
-        private int[] WorldSize { get; }
-        private string InitialInput { get; }
-        public Display Display { get; }
-
-        public Game(int[] worldSize, string initialInput, Display display)
-        {
-            WorldSize = worldSize;
-            InitialInput = initialInput;
-            Display = display;
-        }
-        
         public void Start()
         {
-           
-            World currentWorld = new World();
-            Display.PrintWorld(currentWorld);
-            // create a world with the initial input
-            // display the first world
+            Display.DisplayWelcome();
             
-            // loop the ticks of the world.
-            for (int i = 0; i < 10; i++)
-            {
-                // update the cells
-                // display the world
-                 
-            } 
+            var currentWorld = new World(Display.GetInitialInput(), Display.GetWorldSize());
+            
+            Display.PrintWorld(currentWorld);
+            
+            
         }
-
-        public void PrintWorld(World world)
-        {
-            Display.PrintWorld(world);
-        } 
     }
 }
