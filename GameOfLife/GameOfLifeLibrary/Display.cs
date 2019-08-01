@@ -39,7 +39,7 @@ namespace GameOfLifeLibrary
         }
 
         
-        public static string GetInitialInput()
+        public static string GetInitialInput(int cellCount)
         {
             Console.WriteLine(Constants.SetInitialState);
             var response = "";
@@ -49,8 +49,7 @@ namespace GameOfLifeLibrary
                 response = Console.ReadLine();
                 if (response != null)
                 {
-                    var size = response.Length;
-                    var regex = new Regex(@"^[.x]{" + size + "}$");
+                    var regex = new Regex(@"^[.xX]{" + cellCount + "}$");
                     if (regex.IsMatch(response)) break;
                 }
                 Console.WriteLine(Constants.InitialWorldInputError);

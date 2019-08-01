@@ -6,7 +6,10 @@ namespace GameOfLifeLibrary
         {
             Display.DisplayWelcome();
             
-            var currentWorld = new World(Display.GetInitialInput(), Display.GetWorldSize());
+            var worldSize = Display.GetWorldSize();
+            var cellCount = worldSize[0] * worldSize[1];
+            
+            var currentWorld = new World(worldSize, Display.GetInitialInput(cellCount), cellCount);
             
             Display.PrintWorld(currentWorld);
             
