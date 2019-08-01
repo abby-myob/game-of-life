@@ -6,7 +6,7 @@ namespace GameOfLifeTests
     public class WorldTests
     {
         [Theory]
-        [InlineData("X.X.X.X.X.", new[]{3,3},9, 9)]
+        [InlineData("00000.....", new[]{3,3},9, 9)]
         public void Check_number_of_cells_in_the_world(string initialWorld, int[] worldSize, int cellCount, int expected)
         {
             var world = new World(worldSize, initialWorld, cellCount);
@@ -16,7 +16,7 @@ namespace GameOfLifeTests
         }
         
         [Theory]
-        [InlineData("X.X.X.X.X.", new[]{3,3},9, true)]
+        [InlineData("00000.....", new[]{3,3},9, true)]
         public void Check_dead_cell_at_location_to_be_dead(string initialWorld, int[] worldSize, int cellCount, bool correct)
         {
             var world = new World(worldSize, initialWorld, cellCount);
@@ -26,19 +26,22 @@ namespace GameOfLifeTests
             foreach (var cell in world.Cells)
             {
                 i++;
-                char state = initialWorld[i];
-                if (state == 'x' || state == 'X')
+                if (initialWorld != null)
                 {
-                    if (cell.IsAlive) continue;
-                    correct = false;
-                    break;
-                }
+                    char state = initialWorld[i];
+                    if (state == '0')
+                    {
+                        if (cell.IsAlive) continue;
+                        correct = false;
+                        break;
+                    }
 
-                if (state == '.')
-                {
-                    if (!cell.IsAlive) continue;
-                    correct = false;
-                    break;
+                    if (state == '.')
+                    {
+                        if (!cell.IsAlive) continue;
+                        correct = false;
+                        break;
+                    }
                 }
 
                 correct = false;

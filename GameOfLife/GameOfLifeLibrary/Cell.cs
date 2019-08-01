@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Metadata.Ecma335;
 
@@ -17,13 +18,13 @@ namespace GameOfLifeLibrary
             X = x;
         }
 
-        public bool IsAliveInNewWorld(List<Cell> neighbours)
+        public bool IsAliveInNewWorld(IEnumerable neighbours)
         {
             var aliveNeighbours = 0;
 
             foreach (var cell in neighbours)
             {
-                if (cell.IsAlive) aliveNeighbours++;
+                if (IsAlive) aliveNeighbours++;
             }
 
             if (IsAlive)

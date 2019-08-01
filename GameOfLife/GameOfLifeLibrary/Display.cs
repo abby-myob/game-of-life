@@ -1,6 +1,6 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Net;
 using System.Text.RegularExpressions;
 
 namespace GameOfLifeLibrary
@@ -14,7 +14,7 @@ namespace GameOfLifeLibrary
         
         public static int[] GetWorldSize()
         {
-            string response = "9x9";
+            string response;
             Console.WriteLine(Constants.DefineWorldSize);
             while (true)
             {
@@ -42,14 +42,14 @@ namespace GameOfLifeLibrary
         public static string GetInitialInput(int cellCount)
         {
             Console.WriteLine(Constants.SetInitialState);
-            var response = "";
+            string response;
 
             while (true)
             {
                 response = Console.ReadLine();
                 if (response != null)
                 {
-                    var regex = new Regex(@"^[.xX]{" + cellCount + "}$");
+                    var regex = new Regex(@"^[.0]{" + cellCount + "}$");
                     if (regex.IsMatch(response)) break;
                 }
                 Console.WriteLine(Constants.InitialWorldInputError);
@@ -59,7 +59,15 @@ namespace GameOfLifeLibrary
 
         public static void PrintWorld(World world)
         {
-            //print the currently world
+            var cells = new List<Cell>();
+
+            for (int row = 0; row < world.WorldSize[0]; row++)
+            {
+                for (int col = 0; col < world.WorldSize[1]; col++)
+                {
+                    
+                }
+            }
         }
     }
 }

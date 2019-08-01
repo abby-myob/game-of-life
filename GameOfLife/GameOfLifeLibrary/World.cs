@@ -7,7 +7,7 @@ namespace GameOfLifeLibrary
     {
         private string InitialWorld { get; }
         public int CellCount { get; }
-        private int[] WorldSize { get; }
+        public int[] WorldSize { get; }
         
         public readonly List<Cell> Cells = new List<Cell>();
 
