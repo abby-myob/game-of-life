@@ -26,10 +26,10 @@ namespace GameOfLifeLibrary
                 Console.WriteLine(Constants.WorldSizeInputError);
             }
 
-            return ConvertWorldSize(response);
+            return ConvertWorldSizeStringToInts(response);
         }
         
-        public static int[] ConvertWorldSize(string input)
+        public static int[] ConvertWorldSizeStringToInts(string input)
         {
             var nums = input.Split("x");
             var output = new List<int> {int.Parse(nums[0]), int.Parse(nums[1])};

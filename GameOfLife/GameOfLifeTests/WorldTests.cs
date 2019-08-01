@@ -1,3 +1,4 @@
+using System;
 using GameOfLifeLibrary;
 using Xunit;
 
@@ -64,8 +65,20 @@ namespace GameOfLifeTests
             world.SetUp();
             
             Assert.Equal(isAlive,world.IsAnyCellAlive());
-            
-            
+        }
+        
+        [Theory]
+        [InlineData(new[] {3, 3},9,"..0......", ".........")]
+        public void tick_method_should_produce_correct_new_world(int[] worldSize, int cellCount, string currWorldString, string newWorldString )
+        {
+            World currentWorld = new World(worldSize,currWorldString,cellCount);
+            World newWorld = new World(worldSize,newWorldString,cellCount);
+            currentWorld.SetUp();
+            newWorld.SetUp();
+
+            currentWorld.tick();
+
+            Assert.Equal(newWorld.Cells, currentWorld.Cells);
         }
     }
 }

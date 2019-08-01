@@ -30,7 +30,6 @@ namespace GameOfLifeLibrary
             }
             
         }
-
         private void AddCell(int row, int col, int cellStateIndex)
         {
             Cells.Add(InitialWorld[cellStateIndex] == '.' ? 
