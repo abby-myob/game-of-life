@@ -17,7 +17,7 @@ namespace GameOfLifeTests
         
         [Theory]
         [InlineData("00000....", new[]{3,3},9, true)]
-        public void Check_dead_cell_at_location_to_be_dead(string initialWorld, int[] worldSize, int cellCount, bool correct)
+        public void Check_the_cell_set_up(string initialWorld, int[] worldSize, int cellCount, bool correct)
         {
             var world = new World(worldSize, initialWorld, cellCount);
             world.SetUp();
