@@ -7,7 +7,12 @@ namespace GameOfLife
         static void Main(string[] args)
         {
             Display display = new Display();
-            Game game = new Game();
+
+            display.DisplayWelcome();
+            
+            Game game = new Game(display.GetInitialInput(), display.GetWorldSize(), display);
+
+            game.Start();
         }
     }
 }

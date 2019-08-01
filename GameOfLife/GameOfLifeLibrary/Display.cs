@@ -3,11 +3,13 @@ using System;
 namespace GameOfLifeLibrary
 {
     public class Display
-    { 
-        
-        public string GetWorldSize()
+    {
+        public void DisplayWelcome()
         {
             Console.WriteLine(Constants.Welcome);
+        }
+        public string GetWorldSize()
+        {
             Console.WriteLine(Constants.DefineWorldSize);
 
             return null;
@@ -19,6 +21,10 @@ namespace GameOfLifeLibrary
 
             return null;
         }
-          
+
+        public void PrintWorld(World world)
+        {
+            //print the currently world
+        }
     }
 }
