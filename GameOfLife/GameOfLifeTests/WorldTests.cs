@@ -76,9 +76,28 @@ namespace GameOfLifeTests
             currentWorld.SetUp();
             newWorld.SetUp();
 
-            currentWorld.tick();
+            currentWorld.Tick();
 
             Assert.Equal(newWorld.Cells, currentWorld.Cells);
+        }
+        
+        
+        [Theory]
+        [InlineData(3, 4, 0)]
+        public void check_RowWrap_Test(int rowSize, int row, int expected)
+        {
+            
+//            if (rowSize - 1 < row)
+//            {
+//                row = 0;
+//            } else if (rowSize - 1 > row)
+//            {
+//                row = rowSize - 1;
+//            }
+
+            row = World.CheckRowWrap(row, rowSize);
+            
+            Assert.Equal(expected, row);
         }
     }
 }

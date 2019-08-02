@@ -70,6 +70,7 @@ namespace GameOfLifeLibrary
                     Console.Write('\n');
                 }
 
+                //Console.WriteLine($"Cell {cell.X} , {cell.Y}");
                 Console.Write(cell.IsAlive ? '0' : '.');
 
                 colCount++;

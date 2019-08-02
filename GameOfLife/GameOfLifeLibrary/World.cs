@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 
 namespace GameOfLifeLibrary
 {
@@ -8,7 +9,7 @@ namespace GameOfLifeLibrary
         private int CellCount { get; }
         public int[] WorldSize { get; }
         
-        public readonly List<Cell> Cells = new List<Cell>();
+        public List<Cell> Cells = new List<Cell>();
 
         public World(int[] worldSize, string initialWorld, int cellCount)
         {
@@ -47,6 +48,56 @@ namespace GameOfLifeLibrary
                 }
             }
             return false;
+        }
+
+        public void Tick()
+        {
+            var cells = Cells;
+            Cells = UpdateCells(cells);
+        }
+
+        private List<Cell> UpdateCells(List<Cell> oldCells)
+        {
+            var newCells = new List<Cell>();
+            
+            foreach (var cell in oldCells)
+            {
+                var neighbours = GetNeighbours(cell, oldCells);
+                newCells.Add(new Cell(true/*cell.IsAliveInNewWorld(neighbours)*/,cell.X, cell.Y));
+            }
+
+            return newCells;
+        }
+
+        private List<Cell> GetNeighbours(Cell mainCell, List<Cell> oldCells)
+        {
+            List<Cell> neighbours = oldCells;
+
+            for (var i = -1; i <= 1; i++)
+            {
+                for (var j = -1; j <= 1; j++)
+                {
+                    var row = CheckRowWrap(mainCell.X + i, WorldSize[0]);
+                    var col = CheckColWrap(mainCell.Y + j, WorldSize[1]);
+
+                    var neighbour = oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col));
+                    
+                    neighbours.Add(neighbour);
+                }
+            }
+
+            return neighbours;
+        }
+
+        public static int CheckRowWrap(int row, int rowSize)
+        {
+            return row;
+        }
+        
+        private static int CheckColWrap(int col, int colSize)
+        {
+            return col;
+            
         }
     }
 }

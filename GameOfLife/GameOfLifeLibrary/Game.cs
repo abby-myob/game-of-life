@@ -1,3 +1,6 @@
+using System.Net;
+using System.Runtime.InteropServices;
+
 namespace GameOfLifeLibrary
 {
     public class Game
@@ -9,16 +12,16 @@ namespace GameOfLifeLibrary
             var worldSize = Display.GetWorldSize();
             var cellCount = worldSize[0] * worldSize[1];
             
-            var currentWorld = new World(worldSize, Display.GetInitialInput(cellCount), cellCount);
-            currentWorld.SetUp();
-            Display.PrintWorld(currentWorld);
+            var world = new World(worldSize, Display.GetInitialInput(cellCount), cellCount);
+            world.SetUp();
+            Display.PrintWorld(world);
 
-            
-           // currentWorld.tick();
-            
-            
-
-
+            //while (world.IsAnyCellAlive())
+            {
+                world.Tick();
+                Display.PrintWorld(world);
+            } 
+             
         }
     }
 }
