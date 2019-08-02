@@ -60,7 +60,7 @@ namespace GameOfLifeLibrary
         {
             var cells = world.Cells;
             int colCount = 0;
-            Console.Write('\n');
+            Console.WriteLine('\n');
 
             foreach (var cell in cells)
             {

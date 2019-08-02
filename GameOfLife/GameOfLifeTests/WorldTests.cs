@@ -69,6 +69,7 @@ namespace GameOfLifeTests
 
         [Theory]
         [InlineData(new[] {3, 3}, 9, "0....0...00.....", "....000..00..0..")]
+        [InlineData(new[] {3, 3}, 9, ".........", ".........")]
         public void tick_method_should_produce_correct_new_world(int[] worldSize, int cellCount, string currWorldString,
             string newWorldString)
         {

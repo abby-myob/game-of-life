@@ -16,7 +16,7 @@ namespace GameOfLifeLibrary
             world.SetUp();
             Display.PrintWorld(world);
 
-            //while (world.IsAnyCellAlive())
+            while (world.IsAnyCellAlive())
             {
                 world.Tick();
                 Display.PrintWorld(world);
