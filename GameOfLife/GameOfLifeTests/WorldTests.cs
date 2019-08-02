@@ -66,13 +66,14 @@ namespace GameOfLifeTests
             
             Assert.Equal(isAlive,world.IsAnyCellAlive());
         }
-        
+
         [Theory]
-        [InlineData(new[] {3, 3},9,"..0......", ".........")]
-        public void tick_method_should_produce_correct_new_world(int[] worldSize, int cellCount, string currWorldString, string newWorldString )
+        [InlineData(new[] {3, 3}, 9, "0....0...00.....", "....000..00..0..")]
+        public void tick_method_should_produce_correct_new_world(int[] worldSize, int cellCount, string currWorldString,
+            string newWorldString)
         {
-            World currentWorld = new World(worldSize,currWorldString,cellCount);
-            World newWorld = new World(worldSize,newWorldString,cellCount);
+            World currentWorld = new World(worldSize, currWorldString, cellCount);
+            World newWorld = new World(worldSize, newWorldString, cellCount);
             currentWorld.SetUp();
             newWorld.SetUp();
 
@@ -84,6 +85,8 @@ namespace GameOfLifeTests
         
         [Theory]
         [InlineData(3, 4, 0)]
+        [InlineData(3, -1, 2)]
+        [InlineData(3, 2, 2)]
         public void check_Wrap_Test(int locationLength, int location, int expected)
         {
             location = World.CheckWrap(location, locationLength);

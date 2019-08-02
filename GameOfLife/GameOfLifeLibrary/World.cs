@@ -8,7 +8,7 @@ namespace GameOfLifeLibrary
         private string InitialWorld { get; }
         private int CellCount { get; }
         public int[] WorldSize { get; }
-        
+
         public List<Cell> Cells = new List<Cell>();
 
         public World(int[] worldSize, string initialWorld, int cellCount)
@@ -17,7 +17,7 @@ namespace GameOfLifeLibrary
             CellCount = cellCount;
             WorldSize = worldSize;
         }
- 
+
         public void SetUp()
         {
             var cellStateIndex = 0;
@@ -29,13 +29,11 @@ namespace GameOfLifeLibrary
                     cellStateIndex++;
                 }
             }
-            
         }
+
         private void AddCell(int row, int col, int cellStateIndex)
         {
-            Cells.Add(InitialWorld[cellStateIndex] == '.' ? 
-                new Cell(false, row, col) : 
-                new Cell(true, row, col));
+            Cells.Add(InitialWorld[cellStateIndex] == '.' ? new Cell(false, row, col) : new Cell(true, row, col));
         }
 
         public bool IsAnyCellAlive()
@@ -47,6 +45,7 @@ namespace GameOfLifeLibrary
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -59,11 +58,11 @@ namespace GameOfLifeLibrary
         private List<Cell> UpdateCells(List<Cell> oldCells)
         {
             var newCells = new List<Cell>();
-            
+
             foreach (var cell in oldCells)
             {
                 var neighbours = GetNeighbours(cell, oldCells);
-                newCells.Add(new Cell(true/*cell.IsAliveInNewWorld(neighbours)*/,cell.X, cell.Y));
+                newCells.Add(new Cell(cell.IsAliveInNewWorld(neighbours), cell.X, cell.Y));
             }
 
             return newCells;
@@ -71,17 +70,21 @@ namespace GameOfLifeLibrary
 
         private List<Cell> GetNeighbours(Cell mainCell, List<Cell> oldCells)
         {
-            List<Cell> neighbours = oldCells;
+            List<Cell> neighbours = new List<Cell>();
 
-            for (var i = -1; i <= 1; i++)
-            {
-                for (var j = -1; j <= 1; j++)
-                {
+            for (var i = -1; i <= 1; i++) {
+                for (var j = -1; j <= 1; j++) {
+                    
                     var row = CheckWrap(mainCell.X + i, WorldSize[0]);
                     var col = CheckWrap(mainCell.Y + j, WorldSize[1]);
-
-                    var neighbour = oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col));
                     
+                    if(row == mainCell.X && col == mainCell.Y) continue;
+
+                    Cell neighbour = new Cell(
+                        oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col)).IsAlive,
+                        oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col)).X,
+                        oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col)).Y);
+
                     neighbours.Add(neighbour);
                 }
             }
@@ -89,18 +92,12 @@ namespace GameOfLifeLibrary
             return neighbours;
         }
 
-        public static int CheckWrap(int location, int rowSize)
+        public static int CheckWrap(int location, int locationLength)
         {
-            if (rowSize - 1 < location)
-            {
-                location = 0;
-            } else if (rowSize - 1 > location)
-            {
-                location = rowSize - 1;
-            }
+            if (locationLength - 1 < location) return 0;
+            if (0 > location) return locationLength - 1;
 
             return location;
         }
-        
     }
 }
