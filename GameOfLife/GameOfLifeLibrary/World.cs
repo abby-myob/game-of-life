@@ -77,8 +77,8 @@ namespace GameOfLifeLibrary
             {
                 for (var j = -1; j <= 1; j++)
                 {
-                    var row = CheckRowWrap(mainCell.X + i, WorldSize[0]);
-                    var col = CheckColWrap(mainCell.Y + j, WorldSize[1]);
+                    var row = CheckWrap(mainCell.X + i, WorldSize[0]);
+                    var col = CheckWrap(mainCell.Y + j, WorldSize[1]);
 
                     var neighbour = oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col));
                     
@@ -89,15 +89,18 @@ namespace GameOfLifeLibrary
             return neighbours;
         }
 
-        public static int CheckRowWrap(int row, int rowSize)
+        public static int CheckWrap(int location, int rowSize)
         {
-            return row;
+            if (rowSize - 1 < location)
+            {
+                location = 0;
+            } else if (rowSize - 1 > location)
+            {
+                location = rowSize - 1;
+            }
+
+            return location;
         }
         
-        private static int CheckColWrap(int col, int colSize)
-        {
-            return col;
-            
-        }
     }
 }

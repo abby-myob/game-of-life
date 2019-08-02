@@ -84,20 +84,11 @@ namespace GameOfLifeTests
         
         [Theory]
         [InlineData(3, 4, 0)]
-        public void check_RowWrap_Test(int rowSize, int row, int expected)
+        public void check_Wrap_Test(int locationLength, int location, int expected)
         {
+            location = World.CheckWrap(location, locationLength);
             
-//            if (rowSize - 1 < row)
-//            {
-//                row = 0;
-//            } else if (rowSize - 1 > row)
-//            {
-//                row = rowSize - 1;
-//            }
-
-            row = World.CheckRowWrap(row, rowSize);
-            
-            Assert.Equal(expected, row);
+            Assert.Equal(expected, location);
         }
     }
 }
