@@ -68,8 +68,9 @@ namespace GameOfLifeTests
         }
 
         [Theory]
-        [InlineData(new[] {3, 3}, 9, "0....0...00.....", "....000..00..0..")]
+        [InlineData(new[] {3, 3}, 9, "000000000", ".........")]
         [InlineData(new[] {3, 3}, 9, ".........", ".........")]
+        [InlineData(new[] {3, 3}, 9, ".....0...", ".........")]
         public void tick_method_should_produce_correct_new_world(int[] worldSize, int cellCount, string currWorldString,
             string newWorldString)
         {
@@ -79,8 +80,7 @@ namespace GameOfLifeTests
             newWorld.SetUp();
 
             currentWorld.Tick();
-
-            Assert.Equal(newWorld.Cells, currentWorld.Cells);
+            Assert.Equal(currentWorld.Cells, newWorld.Cells);
         }
         
         

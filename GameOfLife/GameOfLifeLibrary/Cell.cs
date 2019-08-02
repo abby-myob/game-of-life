@@ -35,5 +35,26 @@ namespace GameOfLifeLibrary
 
             return false;
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Cell other && (X.Equals(other.X) && Y.Equals(other.Y) && IsAlive.Equals(other.IsAlive));
+        }
+
+        protected bool Equals(Cell other)
+        {
+            return IsAlive == other.IsAlive && Y == other.Y && X == other.X;
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = IsAlive.GetHashCode();
+                hashCode = (hashCode * 397) ^ Y;
+                hashCode = (hashCode * 397) ^ X;
+                return hashCode;
+            }
+        }
     }
 }
