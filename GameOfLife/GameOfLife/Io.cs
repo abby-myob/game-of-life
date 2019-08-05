@@ -1,6 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.ComponentModel.DataAnnotations;
 using GameOfLifeLibrary;
 
 namespace GameOfLife
@@ -40,7 +39,6 @@ namespace GameOfLife
             }
             return response;
         }
-
         
         public void PrintWorld(World world)
         {
@@ -60,40 +58,34 @@ namespace GameOfLife
 
                 colCount++;
             }
-        }
-    }
-
-    public static class WorldSizeValidation
-    {
-        public static bool IsValidWorldSize(string response)
-        {
-            var regex = new Regex(
-                @"^([1-9]|[1-9][0-9]|[1-9][0-9][0-9])x([1-9]|[1-9][0-9]|[1-9][0-9][0-9])$");
-
-            if (response != null && regex.IsMatch(response)) return true;
-            return false;
+            Console.Write('\n');
         }
 
-        public static int[] ConvertWorldSizeStringToInts(string input)
+        public string GetInputType()
         {
-            var nums = input.Split("x");
-            var output = new List<int> {int.Parse(nums[0]), int.Parse(nums[1])};
-
-            return output.ToArray();
-        }
-    }
-
-    public static class InitialWorldValidation
-    {
-        public static bool IsValidInitialWorld(int cellCount, string response)
-        {
-            if (response != null)
+            while (true)
             {
-                var regex = new Regex(@"^[.0]{" + cellCount + "}$");
-                if (regex.IsMatch(response)) return true;
-            }
+                Console.WriteLine(Constants.InputType);
+                var input = Console.ReadLine();
 
-            return false;
+                switch (input)
+                {
+                    case "file":
+                        return input;
+                    case "no":
+                        return input;
+                }
+            }
+        }
+
+        public bool KeepTicking()
+        {
+            return Console.ReadLine() == "t";
+        }
+
+        public bool IfSave()
+        {
+            return Console.ReadLine() == "s";
         }
     }
 }

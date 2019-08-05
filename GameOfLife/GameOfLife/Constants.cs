@@ -1,4 +1,4 @@
-namespace GameOfLifeLibrary
+namespace GameOfLife
 {
     public static class Constants
     {
@@ -7,5 +7,9 @@ namespace GameOfLifeLibrary
         public const string SetInitialState = "Please input your initial state";
         public const string WorldSizeInputError = "Please input a valid response (9x9)";
         public const string InitialWorldInputError = "Please input valid response";
+        public const string InputType = "If you would like a file input, write file. Otherwise just write no";
+
+        public const string FilePath = "/Users/abby.thompson/Development/game-of-life/GameOfLife/text.txt";
+        public const string FilePathOutput = "/Users/abby.thompson/Development/game-of-life/GameOfLife/output.txt";
     }
 }

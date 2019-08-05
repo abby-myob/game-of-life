@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 
@@ -39,15 +40,7 @@ namespace GameOfLifeLibrary
 
         public bool IsAnyCellAlive()
         {
-            foreach (var cell in Cells)
-            {
-                if (cell.IsAlive)
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            return Cells.Any(cell => cell.IsAlive);
         }
 
         public void Tick()

@@ -89,19 +89,5 @@ namespace GameOfLifeTests
             currentWorld.Tick();
             Assert.Equal(currentWorld.Cells, newWorld.Cells);
         }
-        
-        
-//        [Theory]
-//        [InlineData(3, 4, 0)]
-//        [InlineData(3, -1, 2)]
-//        [InlineData(3, 2, 2)]
-//        public void check_Wrap_Test(int locationLength, int location, int expected)
-//        {
-//            location = World.
-//                
-//                //(location, locationLength);
-//            
-//            Assert.Equal(expected, location);
-//        }
     }
 }
