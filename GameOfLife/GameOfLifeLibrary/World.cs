@@ -1,24 +1,25 @@
 using System.Collections.Generic;
-using System.Reflection.Metadata.Ecma335;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 
 namespace GameOfLifeLibrary
 {
-    public class World
+    public class World : IWorld
     {
-        private string InitialWorld { get; }
-        private int CellCount { get; }
-        public int[] WorldSize { get; }
+        private string InitialWorld { get; set; }
+        private int CellCount { get; set; }
+        public int[] WorldSize { get; set; }
 
         public List<Cell> Cells = new List<Cell>();
-
-        public World(int[] worldSize, string initialWorld, int cellCount)
+        
+        public void Initialize(string initialWorld, int cellCount, int[] worldSize)
         {
             InitialWorld = initialWorld;
             CellCount = cellCount;
             WorldSize = worldSize;
         }
 
-        public void SetUp()
+        public void CellsSetUp()
         {
             var cellStateIndex = 0;
             for (var row = 0; row < WorldSize[0]; row++)
@@ -70,15 +71,16 @@ namespace GameOfLifeLibrary
 
         private List<Cell> GetNeighbours(Cell mainCell, List<Cell> oldCells)
         {
-            List<Cell> neighbours = new List<Cell>();
+            var neighbours = new List<Cell>();
 
-            for (var i = -1; i <= 1; i++) {
-                for (var j = -1; j <= 1; j++) {
-                    
+            for (var i = -1; i <= 1; i++)
+            {
+                for (var j = -1; j <= 1; j++)
+                {
                     var row = CheckWrap(mainCell.X + i, WorldSize[0]);
                     var col = CheckWrap(mainCell.Y + j, WorldSize[1]);
-                    
-                    if(row == mainCell.X && col == mainCell.Y) continue;
+
+                    if (row == mainCell.X && col == mainCell.Y) continue;
 
                     Cell neighbour = new Cell(
                         oldCells.Find(x => x.X.Equals(row) && x.Y.Equals(col)).IsAlive,
@@ -92,12 +94,34 @@ namespace GameOfLifeLibrary
             return neighbours;
         }
 
-        public static int CheckWrap(int location, int locationLength)
+        private static int CheckWrap(int location, int locationLength)
         {
             if (locationLength - 1 < location) return 0;
             if (0 > location) return locationLength - 1;
 
             return location;
         }
+
+        public string GetCurrentWorld()
+        {
+            int colCount = 0;
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (var cell in Cells)
+            {
+                if (colCount == WorldSize[1])
+                {
+                    colCount = 0;
+                    stringBuilder.Append("\n");
+                }
+
+                stringBuilder.Append(cell.IsAlive ? " 0 " : " . ");
+
+                colCount++;
+            }
+
+            return stringBuilder.ToString();
+        }
+
     }
 }

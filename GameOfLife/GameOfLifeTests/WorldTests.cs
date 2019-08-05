@@ -11,7 +11,7 @@ namespace GameOfLifeTests
         public void Check_number_of_cells_in_the_world(string initialWorld, int[] worldSize, int cellCount, int expected)
         {
             var world = new World(worldSize, initialWorld, cellCount);
-            world.SetUp();
+            world.CellsSetUp();
 
             Assert.Equal(expected,world.Cells.Count);
         }
@@ -21,7 +21,7 @@ namespace GameOfLifeTests
         public void Check_the_cell_set_up(string initialWorld, int[] worldSize, int cellCount, bool correct)
         {
             var world = new World(worldSize, initialWorld, cellCount);
-            world.SetUp();
+            world.CellsSetUp();
 
             var i = -1; 
             foreach (var cell in world.Cells)
@@ -62,7 +62,7 @@ namespace GameOfLifeTests
             bool isAlive)
         {
             var world = new World(worldSize, initialWorld, cellCount);
-            world.SetUp();
+            world.CellsSetUp();
             
             Assert.Equal(isAlive,world.IsAnyCellAlive());
         }
@@ -76,23 +76,25 @@ namespace GameOfLifeTests
         {
             World currentWorld = new World(worldSize, currWorldString, cellCount);
             World newWorld = new World(worldSize, newWorldString, cellCount);
-            currentWorld.SetUp();
-            newWorld.SetUp();
+            currentWorld.CellsSetUp();
+            newWorld.CellsSetUp();
 
             currentWorld.Tick();
             Assert.Equal(currentWorld.Cells, newWorld.Cells);
         }
         
         
-        [Theory]
-        [InlineData(3, 4, 0)]
-        [InlineData(3, -1, 2)]
-        [InlineData(3, 2, 2)]
-        public void check_Wrap_Test(int locationLength, int location, int expected)
-        {
-            location = World.CheckWrap(location, locationLength);
-            
-            Assert.Equal(expected, location);
-        }
+//        [Theory]
+//        [InlineData(3, 4, 0)]
+//        [InlineData(3, -1, 2)]
+//        [InlineData(3, 2, 2)]
+//        public void check_Wrap_Test(int locationLength, int location, int expected)
+//        {
+//            location = World.
+//                
+//                //(location, locationLength);
+//            
+//            Assert.Equal(expected, location);
+//        }
     }
 }

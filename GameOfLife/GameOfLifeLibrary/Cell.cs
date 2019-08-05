@@ -24,26 +24,14 @@ namespace GameOfLifeLibrary
                 if (cell.IsAlive) aliveNeighbours++;
             }
 
-            if (IsAlive)
-            {
-                if (aliveNeighbours > 3) return false;
-                if (aliveNeighbours < 2 ) return false;
-                return true;
-            }
-
-            if (aliveNeighbours == 3) return true;
-
-            return false;
+            if (!IsAlive) return aliveNeighbours == 3;
+            if (aliveNeighbours > 3) return false;
+            return aliveNeighbours >= 2;
         }
 
         public override bool Equals(object obj)
         {
             return obj is Cell other && (X.Equals(other.X) && Y.Equals(other.Y) && IsAlive.Equals(other.IsAlive));
-        }
-
-        protected bool Equals(Cell other)
-        {
-            return IsAlive == other.IsAlive && Y == other.Y && X == other.X;
         }
 
         public override int GetHashCode()
