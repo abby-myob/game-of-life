@@ -30,7 +30,7 @@ namespace WebApp.Controllers
                                     "tick" +
                                     "</button>" +
                                     "</form>" +
-                                    "</div> ";
+                                    "</div>";
             return responseString;
         }
 
