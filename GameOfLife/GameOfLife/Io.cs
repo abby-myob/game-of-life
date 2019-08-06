@@ -42,23 +42,12 @@ namespace GameOfLife
         
         public void PrintWorld(World world)
         {
-            var cells = world.Cells;
-            int colCount = 0;
+            string[] worldStrings =  GenerateOutput.GetOutput(world);
             Console.WriteLine('\n');
-
-            foreach (var cell in cells)
+            foreach (var line in worldStrings)
             {
-                if (colCount == world.WorldSize[1])
-                {
-                    colCount = 0;
-                    Console.Write('\n');
-                }
-                
-                Console.Write(cell.IsAlive ? '0' : '.');
-
-                colCount++;
+                Console.WriteLine(line);
             }
-            Console.Write('\n');
         }
 
         public string GetInputType()

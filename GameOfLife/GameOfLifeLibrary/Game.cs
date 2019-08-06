@@ -5,7 +5,7 @@ namespace GameOfLifeLibrary
 {
     public class Game : IGame
     {
-        private readonly World _world = new World();
+        public readonly World World = new World();
         
         public void Start()
         {
@@ -16,34 +16,24 @@ namespace GameOfLifeLibrary
             int cellCount = 340;
             int[] worldSize = new []{20,17};
             
-            _world.Initialize(initialWorld, cellCount, worldSize);
-            _world.CellsSetUp();  
+            World.Initialize(initialWorld, cellCount, worldSize);
+            World.CellsSetUp();  
         }
 
         public void Start(string initialWorld, int cellCount, int[] worldSize)
         {
-            _world.Initialize(initialWorld, cellCount, worldSize);
-            _world.CellsSetUp(); 
+            World.Initialize(initialWorld, cellCount, worldSize);
+            World.CellsSetUp(); 
         }
         
         public void Tick()
         {
-            _world.Tick();
+            World.Tick();
         }
 
         public bool IsWorldDead()
         {
-            return _world.IsAnyCellAlive();
-        }
-
-        public World ReturnCurrentWorld()
-        {
-            return _world;
-        }
-        
-        public string Output()
-        {
-            return _world.GetCurrentWorld();
+            return World.IsAnyCellAlive();
         }
     }
 }

@@ -19,17 +19,17 @@ namespace GameOfLife
         private static void Ticking()
         {
             FileWriter fileWriter = new FileWriter(Constants.FilePathOutput);
-            Io.PrintWorld(Game.ReturnCurrentWorld());
+            Io.PrintWorld(Game.World);
             
             while (Game.IsWorldDead() && Io.KeepTicking())
             {
                 if (Io.IfSave())
                 {
-                    string[] worldString = {Game.ReturnCurrentWorld().GetCurrentWorld()};
+                    string[] worldString = GenerateOutput.GetOutput(Game.World);
                     fileWriter.Save(worldString);
                 }
                 Game.Tick(); 
-                Io.PrintWorld(Game.ReturnCurrentWorld());
+                Io.PrintWorld(Game.World);
             }
         }
 

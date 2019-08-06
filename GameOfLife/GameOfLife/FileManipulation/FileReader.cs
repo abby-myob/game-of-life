@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,7 +18,6 @@ namespace GameOfLife
             string line = Lines[0];
             string[] input = line.Split(" ");
             int[] worldSize = {int.Parse(input[0]), int.Parse(input[1])};
-            Console.WriteLine(worldSize);
             return worldSize;
         }
 

@@ -94,27 +94,6 @@ namespace GameOfLifeLibrary
 
             return location;
         }
-
-        public string GetCurrentWorld()
-        {
-            int colCount = 0;
-            StringBuilder stringBuilder = new StringBuilder();
-
-            foreach (var cell in Cells)
-            {
-                if (colCount == WorldSize[1])
-                {
-                    colCount = 0;
-                    stringBuilder.Append("\n");
-                }
-
-                stringBuilder.Append(cell.IsAlive ? " 0 " : " . ");
-
-                colCount++;
-            }
-
-            return stringBuilder.ToString();
-        }
-
+        
     }
 }
