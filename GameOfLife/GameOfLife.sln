@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeLibrary", "GameOf
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeTests", "GameOfLifeTests\GameOfLifeTests.csproj", "{9A1A2453-D151-4020-AAD4-DB82575036A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp", "WebApp\WebApp.csproj", "{3797CB0D-642E-457D-939B-72CA0D6695AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A1A2453-D151-4020-AAD4-DB82575036A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3797CB0D-642E-457D-939B-72CA0D6695AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3797CB0D-642E-457D-939B-72CA0D6695AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3797CB0D-642E-457D-939B-72CA0D6695AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3797CB0D-642E-457D-939B-72CA0D6695AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
